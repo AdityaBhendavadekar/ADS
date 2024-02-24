@@ -1,21 +1,21 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-struct btree{
+struct BST{
     int data;
-    struct btree *left, *right;
+    struct BST *left, *right;
 };
 
-void inorder(struct btree *root){
+void inorder(struct BST *root){
     if(root == NULL) return;
     inorder(root->left);
     printf(" %d ", root->data);
     inorder(root->right);
 }
 
-struct btree* insert(struct btree *root, int data){
+struct BST* insert(struct BST *root, int data){
     if(root==NULL){
-        root = (struct btree*) malloc(sizeof(struct btree));
+        root = (struct BST*) malloc(sizeof(struct BST));
         root->data = data;
         root->left=NULL;
         root->right=NULL;
@@ -29,7 +29,7 @@ struct btree* insert(struct btree *root, int data){
 }
 
 int main(){
-    struct btree *root=NULL;
+    struct BST *root=NULL;
 
     root = insert(root,67);
     insert(root,45);

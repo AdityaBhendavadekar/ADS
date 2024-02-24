@@ -11,38 +11,31 @@ struct TBT
 
 void inorderTBT(struct TBT *head)
 {
-
-    struct TBT *p;
-    p = head->left;
-
-    while (p->lbit == 0)
+    struct TBT *p = head->left;
+    while (p->lbit == 1)
     {
         p = p->left;
     }
+
     while (p != head)
     {
-        if (p->lbit == 1)
-        {
-            p = p->left;
-        }
-        else if (p->lbit && p->rbit)
-        {
-            printf(" %d ", p->data);
-            p = p->right;
+        printf(" %d ", p->data);
 
-            if (p != head)
+        if (p->rbit == 1)
+        {
+            p = p->right;
+            while (p->lbit == 1)  
             {
-                printf("%d", p->data);
-                p = p->right;
+                p = p->left;
             }
         }
-        else if (p->rbit == 1)
+        else  
         {
-            printf(" %d ", p->data);
             p = p->right;
         }
     }
 }
+
 
 void preorder(struct TBT *head)
 {

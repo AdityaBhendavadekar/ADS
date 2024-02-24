@@ -2,18 +2,18 @@
 #include<stdlib.h>
 #include<stdbool.h>
 
-struct btree{
+struct BST{
     int data;
-    struct btree *left, *right;
+    struct BST *left, *right;
 };
 
 struct stack{
-    struct btree *N;
+    struct BST *N;
     struct stack *next;
 };
 
-struct btree* stackTop(struct stack *top){
-    struct btree *n;
+struct BST* stackTop(struct stack *top){
+    struct BST *n;
     n = top->N;
     return n;
 }
@@ -27,9 +27,9 @@ bool stackEmpty(struct stack *top){
     }
 }
 
-struct btree* pop(struct stack **top){
+struct BST* pop(struct stack **top){
     struct stack *t1 = *top;
-    struct btree *n = t1->N;
+    struct BST *n = t1->N;
 
     // change top to next node
     *top = t1->next;
@@ -39,7 +39,7 @@ struct btree* pop(struct stack **top){
 
 
 
-void push(struct btree *temp, struct stack **top){
+void push(struct BST *temp, struct stack **top){
 
     struct stack *stnode = (struct stack*) malloc(sizeof(struct stack));
 
@@ -49,10 +49,10 @@ void push(struct btree *temp, struct stack **top){
 
 }
 
-void NonRecPostorder(struct btree *root){
+void NonRecPostorder(struct BST *root){
 
     struct stack *top=NULL;
-    struct btree *temp = root, *prev=NULL;
+    struct BST *temp = root, *prev=NULL;
 
 //pushing the left part of tree onto stack
     while (temp!=NULL)
@@ -78,10 +78,10 @@ void NonRecPostorder(struct btree *root){
     }
 }
 
-struct btree* insert(struct btree *root, int data){
+struct BST* insert(struct BST *root, int data){
 
     if(root == NULL){
-        root = (struct btree*) malloc(sizeof(struct btree));
+        root = (struct BST*) malloc(sizeof(struct BST));
         root->data = data;
         root->left = NULL;
         root->right = NULL;
@@ -97,8 +97,8 @@ struct btree* insert(struct btree *root, int data){
 int main(){
 
 
-    struct btree *root=NULL; 
-    struct btree *temp=NULL;
+    struct BST *root=NULL; 
+    struct BST *temp=NULL;
 
     root = temp = insert(root,'m');
     insert(root,'d');

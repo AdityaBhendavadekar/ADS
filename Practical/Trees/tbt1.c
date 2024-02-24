@@ -9,15 +9,18 @@ struct TBT{
 
 };
 
+
+
+
 void preorderTBT(struct TBT *head){
 
     struct TBT *p;
     p=head->left;
 
     while (p != head)
-    {        
-            printf(" %d ", p->data);
-
+    {
+        printf(" %d ", p->data);
+        
         if(p->lbit==1){
             p=p->left;
         }
@@ -29,41 +32,7 @@ void preorderTBT(struct TBT *head){
                 p=p->right;    
             p=p->right;
         }
-        printf(" %d ", p->data);
     } 
-}
-
-
-void inorderTBT(struct TBT *head){
-
-    struct TBT *p;
-    p=head->left;     
-
-        while (p->lbit!=0 )
-        {
-            p=p->left;
-        }
-
-        while (p!=head)
-        {
-            if(p->lbit==1){
-                p=p->left;
-            }
-            else if(p->lbit && p->rbit){
-                printf(" %d ", p->data);
-                p=p->right;
-
-                if(p!=head){
-                printf("%d", p->data);
-                p=p->right;
-                }
-            }
-            else if(p->rbit==1){
-                printf(" %d ",p->data);
-                p=p->right;
-            }
-        }
-
 }
 
 struct TBT* insert(struct TBT *head, int data){
@@ -129,11 +98,8 @@ int main(){
     head = insert(head, 70);
     head = insert(head, 55);
 
-    printf("Preorder Traversing TBT: ");
+    printf("traversing threaded binary tree: ");
     preorderTBT(head);
-
-    printf("\n\nInorder tavarsal of TBT: ");
-    inorderTBT(head);
 
     printf("\nEnd of the progam.");
 
