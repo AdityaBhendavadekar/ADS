@@ -15,7 +15,7 @@ void display(struct queue *h) {
     struct queue *temp = h;
 
     printf("Queue elements: ");
-    while (temp != NULL || temp->next==NULL) {
+    while (temp != NULL) {
         printf("%d ", temp->data);
         temp = temp->next;
     }
@@ -79,7 +79,7 @@ do{
             dequeue(&front, &head, &rear);
             break;
         case 3:
-            display(head);
+            display(front);
             break;
         case 4:
             printf("Exiting from system...");
