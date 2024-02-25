@@ -41,7 +41,6 @@ struct BST* deleteNode(struct BST *root, int delete){
     }
     
     return root;
-
 }
 
 void search_ele(struct BST *root, int search){
