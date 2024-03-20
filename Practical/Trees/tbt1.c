@@ -9,9 +9,6 @@ struct TBT{
 
 };
 
-
-
-
 void preorderTBT(struct TBT *head){
 
     struct TBT *p;

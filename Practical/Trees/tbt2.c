@@ -3,11 +3,49 @@
 
 struct TBT
 {
-
     int data;
     int lbit, rbit;
     struct TBT *left, *right;
 };
+
+void postorder(struct TBT *head)
+{
+    if (head == NULL)
+        return;
+
+    struct TBT *p = head->left;
+    struct TBT *prev = NULL;
+
+    while (p != head) {
+        while (p->lbit == 1) {
+            p = p->left;
+        }
+
+        if (p->rbit == 0 || p->right == prev) {
+            printf(" %d ", p->data);
+            prev = p;
+            p = p->right;
+        } else {
+            struct TBT *temp = p->right;
+            while (temp->lbit == 1 && temp->left != prev) {
+                temp = temp->left;
+            }
+            if (temp->left == NULL) {
+                temp->left = prev;
+                temp->lbit = 1;
+                printf(" %d ", p->data);
+                prev = p;
+                p = p->right;
+            } else {
+                temp->left = NULL;
+                temp->lbit = 0;
+                p = p->right;
+            }
+        }
+    }
+}
+
+
 
 void inorderTBT(struct TBT *head)
 {
@@ -135,11 +173,14 @@ int main()
     head = insert(head, 70);
     head = insert(head, 55);
 
-    printf("traversing threaded binary tree: ");
+    printf("preorder traversing threaded binary tree: ");
     preorder(head);
 
     printf("\ninorder traversing threaded binary tree: ");
     inorderTBT(head);
+
+    printf("\nPostorder traversing threaded binary tree: ");
+    postorder(head);
 
     printf("\nCode completed");
 
