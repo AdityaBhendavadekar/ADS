@@ -3,8 +3,7 @@
 
 int n = 4;
 
-bool isEmpty(int front, int rear)
-{
+bool isEmpty(int front, int rear){
     if (front >= rear)
     {
         return false;
@@ -12,8 +11,7 @@ bool isEmpty(int front, int rear)
     return true;
 }
 
-int dequeue(int queue[10], int *front, int *rear)
-{
+int dequeue(int queue[10], int *front, int *rear){
 
     if (*front == -1){
         printf("Queue underflow\n");
@@ -25,8 +23,7 @@ int dequeue(int queue[10], int *front, int *rear)
     return deleted;
 }
 
-void enqueue(int v, int queue[10], int *front, int *rear)
-{
+void enqueue(int v, int queue[10], int *front, int *rear){
     if (*front == -1 && *rear == -1){
         *front = 0;
         *rear = 0;
@@ -36,8 +33,7 @@ void enqueue(int v, int queue[10], int *front, int *rear)
     (*rear)++;
 }
 
-void BFS(int adjMatrix[6][6], int n)
-{
+void BFS(int adjMatrix[6][6], int n){
     int visited[6], start, w;
     int queue[10];
     int front = -1, rear = -1;
@@ -50,8 +46,7 @@ void BFS(int adjMatrix[6][6], int n)
     enqueue(start, queue, &front, &rear);
     visited[start] = 1;
 
-    while (isEmpty(front, rear))
-    {
+    while (isEmpty(front, rear)){
         w = dequeue(queue, &front, &rear);
         printf(" %d ", w);
 
@@ -66,8 +61,7 @@ void BFS(int adjMatrix[6][6], int n)
     }
 }
 
-void showAdjMatrix(int adjMatrix[6][6], int n)
-{
+void showAdjMatrix(int adjMatrix[6][6], int n){
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < n; j++)
@@ -78,9 +72,7 @@ void showAdjMatrix(int adjMatrix[6][6], int n)
     }
 }
 
-void createAjMatrix(int adjMatrix[6][6], int arr[][2], int size, int m)
-{
-    // setting adjacency matrix to 0;
+void createAjMatrix(int adjMatrix[6][6], int arr[][2], int size, int m){
     for (int i = 0; i < size; i++)
     {
         for (int j = 0; j < size; j++)
@@ -98,9 +90,7 @@ void createAjMatrix(int adjMatrix[6][6], int arr[][2], int size, int m)
     }
 }
 
-int main()
-{
-
+int main(){
     int adjMatrix[n + 1][n + 1];
     int arr[][2] = {{0, 1}, {0, 2}, {1, 2}, {1, 3}, {1, 4}, {3, 4}};
     int m = 6;
